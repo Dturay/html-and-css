@@ -19,7 +19,7 @@
     :root {
       --bg-cream: #faf7f2;
       --bg-sand: #f2ece1;
-      --text-dark: #2c2a29;
+      --text-dark: #1a2411;
       --text-muted: #6b655f;
       --accent-gold: #b89758;
       --accent-sage: #5e6e5d;
@@ -238,12 +238,6 @@
       text-align: center;
     }
 
-    .toast-section h2 {
-      margin-bottom: 0.6rem;
-      font-size: clamp(1.8rem, 6vw, 2.3rem);
-      line-height: 1.2;
-    }
-
     .toast-description {
       color: var(--text-muted);
       font-size: 0.9rem;
@@ -358,6 +352,12 @@
 </head>
 
 <body>
+  <!-- Replace song.mp3 with your audio file path. -->
+  <audio id="wedding-music" loop>
+    <source src="wedding-music.mp3" type="audio/mpeg">
+    Your browser does not support audio playback.
+  </audio>
+
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
   <header class="hero">
@@ -365,7 +365,6 @@
     <h1>John <span class="ampersand">&amp;</span> Tomi</h1>
     <div class="divider" aria-hidden="true"></div>
     <p class="date-banner">Today &amp; Forever · November 12, 2026</p>
-    <a href="#letter" class="scroll-btn">Read my wishes</a>
   </header>
 
   <main class="container">
@@ -373,16 +372,21 @@
       <h2>To My Brother &amp; My New Sister</h2>
 
       <div class="letter-body">
-        <p>Dear John and Tomi,</p>
-
         <p>
-          Watching you build a life together fills me with joy and pride. John, I’m so happy to see the peace and
-          happiness Tomi brings you—and the thoughtful, responsible partner you’ve become.
+          I’m overjoyed to see you officially begin your life as one. Watching you build a life together fills me with
+          joy and pride.
         </p>
 
         <p>
-          Tomi, my fave and new sister, you’re the answer to a prayer. You’re loyal, supportive, gorgeous,
-          family-oriented, friendly, and a true prankster. Thank you for loving and caring for my brother.
+          John, I’m so happy to see the peace and happiness Tomi brings you And watching you grow over the past few
+          years into a more responsible man—one who is willing to learn, grow, and become an even better partner to
+          Tomi—makes me prouder than words can say.
+        </p>
+
+        <p>
+          Tomi, my fave and new sister, you’re an answered prayer. Only God could have blessed John with someone so
+          loyal, supportive, gorgeous, family-oriented, friendly and a true prankster. Thank you for loving and taking
+          such good care of my brother.
         </p>
 
         <p>
@@ -396,18 +400,19 @@
         </p>
 
         <p>
-          Cheers to a lifetime of growing together and making beautiful memories. <br>I love you both, congratulations!
+          Cheers to a lifetime of growing together and making beautiful memories.<br>
+          I love you both, congratulations!
         </p>
 
         <div class="signature">
           <span>With all my love,</span><br>
-          <strong>David</strong>
+          <strong>David.</strong>
         </div>
       </div>
     </section>
 
     <section class="wishes-section">
-      <h2>My Wishes for Your Marriage</h2>
+      <h2>My Wishes for You two are:</h2>
 
       <div class="wishes-grid">
         <article class="wish-box">
@@ -428,8 +433,7 @@
     </section>
 
     <section class="toast-section">
-      <h2 class="serif">Raise a Glass to Jomi 2026!</h2>
-      <p class="toast-description">Tap below to celebrate the newlyweds.</p>
+      <p class="toast-description">Tap below!</p>
       <button type="button" class="toast-btn" id="celebrate-btn">
         Cheers to John &amp; Tomi
       </button>
@@ -442,18 +446,27 @@
   <footer>Made with love for John &amp; Tomi · #Jomi2026</footer>
 
   <script>
-    /*
-      CONFETTI:
-      The canvas must be resized to the actual screen size, then particles
-      are drawn and animated with requestAnimationFrame when the button is tapped.
-    */
     (() => {
       const canvas = document.getElementById("confetti-canvas");
       const ctx = canvas.getContext("2d");
       const button = document.getElementById("celebrate-btn");
       const message = document.getElementById("toast-message");
+      const music = document.getElementById("wedding-music");
+      music.volume = 0.25;
 
       if (!ctx || !button) return;
+
+      // Browsers may block autoplay, so try to start music on the first interaction.
+      function startMusic() {
+        if (music.paused) {
+          music.play().catch(() => {
+            // Playback can still fail if the audio file is missing or unsupported.
+          });
+        }
+      }
+
+      document.addEventListener("pointerdown", startMusic, { once: true });
+      document.addEventListener("keydown", startMusic, { once: true });
 
       const colors = ["#b89758", "#5e6e5d", "#d9a38f", "#e8ce8a", "#9eabc0"];
       const particles = [];
