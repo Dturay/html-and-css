@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf7f2">
+  <meta name="description" content="A wedding-day message celebrating John and Tomi — Jomi 2026.">
+  <title>Jomi 2026 | Celebrating John &amp; Tomi</title>
+
+  <!-- Google Fonts are optional; the page also has fallback fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-cream: #faf7f2;
+      --bg-sand: #f2ece1;
+      --text-dark: #2c2a29;
+      --text-muted: #6b655f;
+      --accent-gold: #b89758;
+      --accent-sage: #5e6e5d;
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 1rem;
+    }
+
+    body {
+      overflow-x: hidden;
+      background: var(--bg-cream);
+      color: var(--text-dark);
+      font-family: "Montserrat", Arial, sans-serif;
+      line-height: 1.8;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-weight: 400;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: 90svh;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 1.25rem;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 42%, #fff 0%, var(--bg-cream) 72%);
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      color: var(--accent-gold);
+      opacity: 0.18;
+      font-family: Georgia, serif;
+      font-size: clamp(5rem, 14vw, 10rem);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      content: "❧";
+      top: 4%;
+      left: 4%;
+      transform: rotate(-25deg);
+    }
+
+    .hero::after {
+      content: "❧";
+      right: 4%;
+      bottom: 3%;
+      transform: rotate(155deg);
+    }
+
+    .hashtag {
+      margin-bottom: 0.8rem;
+      color: var(--accent-gold);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      animation: fadeInDown 0.9s ease both;
+    }
+
+    h1 {
+      font-size: clamp(3.5rem, 12vw, 7rem);
+      line-height: 1;
+      animation: fadeInUp 1s ease both;
+    }
+
+    .ampersand {
+      color: var(--accent-gold);
+      font-size: 0.82em;
+      font-style: italic;
+    }
+
+    .divider {
+      width: 64px;
+      height: 1px;
+      margin: 1.8rem auto;
+      background: var(--accent-gold);
+    }
+
+    .date-banner {
+      color: var(--text-muted);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      font-style: italic;
+    }
+
+    .scroll-btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding-bottom: 3px;
+      border-bottom: 1px solid var(--accent-gold);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .scroll-btn:hover,
+    .scroll-btn:focus-visible {
+      color: var(--accent-gold);
+    }
+
+    /* CONTENT */
+    .container {
+      width: min(100% - 2rem, 800px);
+      margin-inline: auto;
+      padding: 2rem 0 4rem;
+    }
+
+    .letter-card {
+      margin-bottom: 4rem;
+      padding: clamp(1.5rem, 6vw, 4rem);
+      border: 1px solid rgba(184, 151, 88, 0.25);
+      border-radius: 6px;
+      background: var(--white);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .letter-card h2,
+    .wishes-section > h2 {
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: clamp(2rem, 6vw, 2.6rem);
+      line-height: 1.15;
+    }
+
+    .letter-body p {
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .signature {
+      margin-top: 2rem;
+      color: var(--accent-gold);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.55rem;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .signature strong {
+      font-weight: 600;
+    }
+
+    /* WISHES */
+    .wishes-section {
+      margin-bottom: 4rem;
+    }
+
+    .wishes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .wish-box {
+      padding: 1.7rem 1.2rem;
+      border: 1px solid rgba(184, 151, 88, 0.12);
+      border-radius: 6px;
+      background: var(--bg-sand);
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .wish-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(44, 42, 41, 0.07);
+    }
+
+    .wish-box h3 {
+      margin-bottom: 0.6rem;
+      color: var(--accent-sage);
+      font-size: 1.45rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .wish-box p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    /* TOAST */
+    .toast-section {
+      position: relative;
+      z-index: 1;
+      padding: clamp(2rem, 6vw, 3.5rem) 1.25rem;
+      border-radius: 6px;
+      background: var(--bg-sand);
+      text-align: center;
+    }
+
+    .toast-section h2 {
+      margin-bottom: 0.6rem;
+      font-size: clamp(1.8rem, 6vw, 2.3rem);
+      line-height: 1.2;
+    }
+
+    .toast-description {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .toast-btn {
+      margin-top: 1.4rem;
+      padding: 1rem 1.7rem;
+      border: 0;
+      border-radius: 4px;
+      background: var(--text-dark);
+      color: var(--white);
+      cursor: pointer;
+      font: 500 0.78rem "Montserrat", Arial, sans-serif;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .toast-btn:hover,
+    .toast-btn:focus-visible {
+      background: var(--accent-sage);
+    }
+
+    .toast-btn:active {
+      transform: scale(0.97);
+    }
+
+    #toast-message {
+      min-height: 2.2em;
+      margin-top: 1.25rem;
+      color: var(--accent-sage);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.2rem, 4vw, 1.55rem);
+      font-style: italic;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    #toast-message.visible {
+      opacity: 1;
+    }
+
+    footer {
+      padding: 2.5rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-align: center;
+    }
+
+    /* Confetti canvas sits over the page, but never blocks clicks. */
+    #confetti-canvas {
+      position: fixed;
+      z-index: 999;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        min-height: 84svh;
+      }
+
+      .wishes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wish-box {
+        padding: 1.35rem 1.2rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <header class="hero">
+    <div class="hashtag">#Jomi2026</div>
+    <h1>John <span class="ampersand">&amp;</span> Tomi</h1>
+    <div class="divider" aria-hidden="true"></div>
+    <p class="date-banner">Today &amp; Forever · November 12, 2026</p>
+    <a href="#letter" class="scroll-btn">Read my wishes</a>
+  </header>
+
+  <main class="container">
+    <section class="letter-card" id="letter">
+      <h2>To My Brother &amp; My New Sister</h2>
+
+      <div class="letter-body">
+        <p>Dear John and Tomi,</p>
+
+        <p>
+          Watching the two of you build your life together has been one of the
+          greatest joys. John, seeing the happiness and peace Tomi brings into
+          your life makes me prouder than words can say. Tomi, welcome officially
+          to the family—we couldn't have wished for a more wonderful person to
+          stand beside my brother.
+        </p>
+
+        <p>
+          [Add a favorite memory of them here, or a funny story about your
+          brother growing up and how Tomi makes him even happier.]
+        </p>
+
+        <p>
+          As you begin this new chapter, may your home always be filled with
+          laughter, patience, grace, and a love that grows deeper with every
+          passing year.
+        </p>
+
+        <div class="signature">
+          <span>With all my love,</span><br>
+          <strong>[Your Name]</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="wishes-section">
+      <h2>My Wishes for Your Marriage</h2>
+
+      <div class="wishes-grid">
+        <article class="wish-box">
+          <h3>Endless Laughter</h3>
+          <p>May you keep finding joy in the big celebrations and the little everyday moments.</p>
+        </article>
+
+        <article class="wish-box">
+          <h3>Unshakable Peace</h3>
+          <p>May your home be a place of comfort, understanding, and kindness to one another.</p>
+        </article>
+
+        <article class="wish-box">
+          <h3>New Adventures</h3>
+          <p>May every new chapter bring you closer and give you memories to treasure together.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="toast-section">
+      <h2 class="serif">Raise a Glass to Jomi 2026!</h2>
+      <p class="toast-description">Tap below to celebrate the newlyweds.</p>
+      <button type="button" class="toast-btn" id="celebrate-btn">
+        Cheers to John &amp; Tomi
+      </button>
+      <p id="toast-message" role="status" aria-live="polite">
+        🥂 Here's to a lifetime of love and happiness! #Jomi2026
+      </p>
+    </section>
+  </main>
+
+  <footer>Made with love for John &amp; Tomi · #Jomi2026</footer>
+
+  <script>
+    /*
+      CONFETTI:
+      The canvas must be resized to the actual screen size, then particles
+      are drawn and animated with requestAnimationFrame when the button is tapped.
+    */
+    (() => {
+      const canvas = document.getElementById("confetti-canvas");
+      const ctx = canvas.getContext("2d");
+      const button = document.getElementById("celebrate-btn");
+      const message = document.getElementById("toast-message");
+
+      if (!ctx || !button) return;
+
+      const colors = ["#b89758", "#5e6e5d", "#d9a38f", "#e8ce8a", "#9eabc0"];
+      const particles = [];
+      let animationFrame = null;
+      let width = 0;
+      let height = 0;
+      let pixelRatio = 1;
+
+      function resizeCanvas() {
+        pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+
+        canvas.width = Math.round(width * pixelRatio);
+        canvas.height = Math.round(height * pixelRatio);
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+
+        // Draw using normal CSS-pixel coordinates on high-resolution screens.
+        ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+      }
+
+      function createConfetti() {
+        const originX = width / 2;
+        const originY = Math.min(height * 0.72, window.innerHeight - 90);
+        const amount = Math.min(180, Math.max(90, Math.round(width * 0.18)));
+
+        for (let i = 0; i < amount; i++) {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 3 + Math.random() * 8;
+
+          particles.push({
+            x: originX,
+            y: originY,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 4,
+            gravity: 0.13 + Math.random() * 0.1,
+            size: 4 + Math.random() * 6,
+            rotation: Math.random() * Math.PI * 2,
+            rotationSpeed: (Math.random() - 0.5) * 0.2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            life: 100 + Math.random() * 60
+          });
+        }
+
+        if (animationFrame === null) {
+          animate();
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += p.gravity;
+          p.vx *= 0.99;
+          p.rotation += p.rotationSpeed;
+          p.life -= 1;
+
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation);
+          ctx.globalAlpha = Math.min(1, p.life / 25);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+          ctx.restore();
+
+          if (p.life <= 0 || p.y > height + 30) {
+            particles.splice(i, 1);
+          }
+        }
+
+        if (particles.length > 0) {
+          animationFrame = requestAnimationFrame(animate);
+        } else {
+          ctx.clearRect(0, 0, width, height);
+          animationFrame = null;
+        }
+      }
+
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      button.addEventListener("click", () => {
+        message.classList.add("visible");
+        createConfetti();
+      });
+    })();
+  </script>
+</body>
+</html>
